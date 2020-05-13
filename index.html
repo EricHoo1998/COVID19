@@ -1,0 +1,125 @@
+<!--Data By China National Health Commission
+Create By EricHoo 2020 Apache License Version 2.0
+Power By Baidu Echartsjs Copyright © 2017-2019
+ https://echarts.apache.org/zh/index.html
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+       <title>COVD19 CHN</title>
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=xfhhaTThl11qYVrqLZii6w8qE5ggnhrY&__ec_v__=20190126"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+option = {
+    title: {
+        text: 'CHINA-COVID19'
+    },
+    tooltip: {
+        trigger: 'axis'
+    },
+    legend: {
+        data: ['China-Total', 'HuBei-Total','Suspect', 'Cure', 'Death']
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        boundaryGap: false,
+        data: ['1-21', '1-22', '1-23', '1-24', '1-25', '1-26', '1-27', '1-28', '1-29', '1-30', '1-31', '2-1', '2-2', '2-3', '2-4', '2-5', '2-6', '2-7', '2-8', '2-9', '2-10', '2-11', '2-12', '2-13', '2-14', '2-15', '2-16', '2-17', '2-18', '2-19', '2-20', '2-21', '2-22', '2-23', '2-24', '2-25', '2-26', '2-27', '2-28', '2-29', '3-1', '3-2', '3-3', '3-4', '3-5', '3-6', '3-7', '3-8', '3-9', '3-10', '3-11', '3-12', '3-13', '3-13', '3-14', '3-15', '3-16', '3-17', '3-18', '3-19', '3-20', '3-21', '3-22', '3-23', '3-24', '3-25', '3-26', '3-27', '3-28', '3-29', '3-30', '3-31']
+    },
+    yAxis: {
+        type: 'value'
+    },
+    series: [
+        {
+            name: 'China-Total',
+            type: 'line',
+            
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            data: [375,473, 637, 868, 1372, 2066, 2817, 4599, 5999, 7830, 9685, 11889, 14413, 17335, 20530, 24377, 28120, 31260, 34662, 37280, 40241, 42714, 52526,59888,63946,66577,68595,70640,72531,74280,74679,75570,76395,77048,77262,77785,78190,78630,78959,79394,79972,80174,80303,80424,80568,80734,80815,80859,80905,80931,80967,80981,81007,81021,81048,81079,81116,81151,81237,81301,81439,81498,81649,81747,81896]
+        },
+        {
+           name: 'Suspect',
+            type: 'line',
+            
+            label: {
+                normal: {
+                    show: true,
+                    position: 'right'
+                }
+            },
+            data: [44,137, 422, 1072, 1983, 2692, 5794, 6973, 9239, 12167, 15238, 17988, 19544, 21558, 23214, 23260, 24702, 26359, 27657, 28942, 23589, 21675, 16067, 13435,10109,8969,8228,7264,6242,5248,4922,5206,5365,4148,3434,2824,2491,2358,2308,1418,851,715,587,520,522,482,502,458,421,349,285,253,147,115,134,128,119,119,105,104,106,118,136,132,134]
+        },
+        {
+            name: 'Cure',
+            type: 'line',
+            
+            label: {
+                normal: {
+                    show: true,
+                    position: 'right'
+                }
+            },
+            data: [25, 25, 30, 34, 39, 49, 52, 68, 104, 135, 176, 255, 334, 502, 718, 901, 1253, 1730, 2215, 2823, 3388, 4013, 4744, 5994,7039,8200,9737,11145,12785,14388,16657,18370,21049,23167,24758,27566,30029,32532,36159,39199,42150,44519,47414,50010,52277,53968,55558,57232,58802,60195,61574,62924,64226,65654,67024,67863,68799,69725,70547,71284,71882,72382,72848,73300,73796]
+        },
+        {
+            name: 'Death',
+            type: 'line',
+
+            label: {
+                normal: {
+                    show: true,
+                    position: 'left'
+                }
+            },
+            data: [6, 9, 17, 26, 41, 56, 81, 106, 132, 170, 213, 259, 304, 361, 426, 492, 564, 637, 723, 813, 909, 1017, 1114, 1368,1382,1524,1667,1772,1871,2007,2122,2239,2348,2445,2595,2666,2718,2747,2791,2838,2873,2915,2948,2984,3016,3045,3073,3100,3124,3140,3162,3173,3181,3194,3204,3218,3231,3242,3250,3253,3261,3267,3276,3283,3287]
+        },
+        {
+            name: 'HuBei-Total',
+            type: 'line',
+            
+            label: {
+                normal: {
+                    show: true,
+                    position: 'top'
+                }
+            },
+            data: [303,444,549,729,1052,1423,2714,3554,4586,5806,7153,9074,11177,13522,16678,19665,22112,24953,27100,29631,31728,33366,48206,51986,54406,56249,58182,59989,61682,62031,62662,63454,64084,64287,64786,65187,65596,65914,66337,66907,67103,67217,67332,67466,67592,67666,67707,67743,67760,67773,67781,67786,67790,67794,67798,67799,67800,67800,67800,67800,67800,67800,67801,67801]
+        }
+    ]
+};
+;
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+       </script>
+   </body>
+</html>
